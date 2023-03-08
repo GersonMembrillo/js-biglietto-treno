@@ -11,6 +11,8 @@ const userAge = prompt('inserisci la tua età');
 console.log(userDistance);
 console.log(userAge);
 
+// qui ho provato a vedere se mancavano le cifre a due zeri dopo la virgola perche non leggeva i numeri con le virgole, quindi ho usato il sistema a potenze e radici.
+
 let less20 = 0.8;
 // let less20 = 8e-1;
 let less40 = 0.6;
