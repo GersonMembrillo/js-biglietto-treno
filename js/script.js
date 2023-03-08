@@ -4,27 +4,54 @@
 // va applicato uno sconto del 20% per i minorenni
 // va applicato uno sconto del 40% per gli over 65.
 
-var userDistance = prompt('Inserisci la distanza da percorrere (in km)');
-var userAge = prompt('inserisci la tua età');
+// promps
+const userDistance = prompt('Inserisci la distanza da percorrere (in km)');
+const userAge = prompt('inserisci la tua età');
 
 console.log(userDistance);
+console.log(userAge);
 
+let less20 = 0.8;
+// let less20 = 8e-1;
+let less40 = 0.6;
+// let less40 = 6e-1;
 let pricePerKM = 0.21;
-
-let message = 'Importo totale: ';
+// let pricePerKM = 21e-2;
+let total = 'Importo totale: € ';
+let discount20 = 'Sconto applicato Under 18 (-20%): € ';
+let discount40 = 'Sconto applicato Over 65 (-40%): € ';
+let newTotal = 'Da pagare: € ';
 
 if (userDistance && !isNaN(userDistance) && userAge && !isNaN(userAge)) {
 	if (userAge < 18) {
-		messaggio += userDistance * pricePerKM * 0.8;
+		total += (userDistance * pricePerKM).toFixed(2);
+		discount20 += (userDistance * pricePerKM - userDistance * pricePerKM * less20).toFixed(2);
+		discount40 = '';
+		newTotal += (userDistance * pricePerKM * less20).toFixed(2);
 	} else if ((userAge > 18, userAge < 65)) {
-		messaggio += userDistance * pricePerKM;
-	} else if (userAge > 65) {
-		message += yserDistance * pricePerKM * 0.6;
+		total += (userDistance * pricePerKM).toFixed(2);
+		discount20 = '';
+		discount40 = '';
+		newTotal = '';
+	} else if ((userAge) => 65) {
+		total += (userDistance * pricePerKM).toFixed(2);
+		discount20 = '';
+		discount40 += (userDistance * pricePerKM - userDistance * pricePerKM * less40).toFixed(2);
+		newTotal += (userDistance * pricePerKM * less40).toFixed(2);
 	}
 } else {
-	message = 'Inserisci valori validi';
+	total = 'Inserisci valori validi';
+	discount20 = '';
+	discount40 = '';
+	newTotal = '';
 }
 
-document.getElementById('app').innerHTML += `<p>${message}</p>`;
+// Inseriti i risultati nella #app
 
-// LASCIO IL PC A MIO FRATELLINO PER VISITA MEDICA A DISTANZA, CONTINUO DOPO LE 17
+document.getElementById(
+	'app'
+).innerHTML += `<p>${total}</p><p>${discount20}</p><p>${discount40}</p><p>${newTotal}</p>`;
+
+// Console fatta per prendere anche i valore ottenuti
+
+console.log(`${total} ${discount20}${discount40} ${newTotal}`);
