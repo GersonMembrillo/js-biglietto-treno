@@ -26,3 +26,5 @@ if (userDistance && !isNaN(userDistance) && userAge && !isNaN(userAge)) {
 }
 
 document.getElementById('app').innerHTML += `<p>${message}</p>`;
+
+// LASCIO IL PC A MIO FRATELLINO PER VISITA MEDICA A DISTANZA, CONTINUO DOPO LE 17
