@@ -19,6 +19,10 @@ let less40 = 0.6;
 // let less40 = 6e-1;
 let pricePerKM = 0.21;
 // let pricePerKM = 21e-2;
+
+// ALTERNATIVE
+let price = userDistance * pricePerKM;
+
 let total = 'Importo totale: € ';
 let discount20 = 'Sconto applicato Under 18 (-20%): € ';
 let discount40 = 'Sconto applicato Over 65 (-40%): € ';
@@ -27,19 +31,26 @@ let newTotal = 'Da pagare: € ';
 if (userDistance && !isNaN(userDistance) && userAge && !isNaN(userAge)) {
 	if (userAge < 18) {
 		total += (userDistance * pricePerKM).toFixed(2);
+		// ALTERNATIVE: total += (price).toFixed(2);
 		discount20 += (userDistance * pricePerKM - userDistance * pricePerKM * less20).toFixed(2);
+		// ALTERNATIVE: total += price - (price * less20).toFixed(2);
 		discount40 = '';
 		newTotal += (userDistance * pricePerKM * less20).toFixed(2);
-	} else if ((userAge > 18, userAge < 65)) {
+		// ALTERNATIVE: total += (price * less20).toFixed(2);
+	} else if (((userAge) => 18, userAge < 65)) {
 		total += (userDistance * pricePerKM).toFixed(2);
+		// ALTERNATIVE: total += (price * less20).toFixed(2);
 		discount20 = '';
 		discount40 = '';
 		newTotal = '';
 	} else if ((userAge) => 65) {
 		total += (userDistance * pricePerKM).toFixed(2);
+		// ALTERNATIVE: total += (price).toFixed(2);
 		discount20 = '';
 		discount40 += (userDistance * pricePerKM - userDistance * pricePerKM * less40).toFixed(2);
+		// ALTERNATIVE: total += price - (price * less40).toFixed(2);
 		newTotal += (userDistance * pricePerKM * less40).toFixed(2);
+		// ALTERNATIVE: total += (price * less40).toFixed(2);
 	}
 } else {
 	total = 'Inserisci valori validi';
